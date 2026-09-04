@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Donate to Yajna for Humanity — step 2 of 2: set up your Direct Debit payment details.">
+  <title>Donate: payment — Yajna for Humanity</title>
+  <link rel="icon" href="images/bird_2.jpg">
+
+  <!-- Web fonts + icons + shared stylesheet -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- ============================== HEADER ============================== -->
+  <header class="site-header">
+    <nav class="navbar container" aria-label="Main navigation">
+      <a href="index.html" class="brand">
+        <img src="images/bird_2.jpg" alt="Yajna for Humanity logo" class="brand__logo">
+        <span>Yajna <em>for Humanity</em></span>
+      </a>
+
+      <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul class="nav-links" id="primary-nav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="donate.html">Causes</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="login.html">Log in</a></li>
+        <li><a href="form.html" class="btn btn--primary btn--sm">Donate now</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="section">
+    <div class="container" style="max-width: 760px;">
+
+      <div class="section-head">
+        <p class="eyebrow">Make a donation</p>
+        <h1 style="font-size: clamp(1.8rem, 4vw, 2.6rem);">Payment details</h1>
+      </div>
+
+      <!-- Step indicator: this page is step 2 of the two-step flow -->
+      <div class="steps" aria-label="Donation progress">
+        <div class="step">
+          <span class="step__dot"><i class="fa-solid fa-check" aria-hidden="true"></i></span> Your details
+        </div>
+        <div class="step step--active">
+          <span class="step__dot">2</span> Payment
+        </div>
+      </div>
+
+      <!-- This is a university project, so no payment is really taken:
+           js/main.js intercepts the submit and shows a thank-you message. -->
+      <div class="form-card">
+        <form id="payment-form" class="form-grid" novalidate="false">
+
+          <!-- ==================== DIRECT DEBIT DATE ==================== -->
+          <fieldset>
+            <legend>Direct Debit start date</legend>
+            <div class="form-grid form-grid--2col">
+              <div class="field">
+                <label for="dd-day">Day of the month <span class="required">*</span></label>
+                <select id="dd-day" name="dd-day" required>
+                  <option value="" disabled>Day…</option>
+                  <option value="1">1st</option>
+                  <option value="5">5th</option>
+                  <option value="10">10th</option>
+                  <option value="15">15th</option>
+                  <option value="20" selected>20th</option>
+                  <option value="25">25th</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="dd-month">Starting from <span class="required">*</span></label>
+                <input type="month" id="dd-month" name="dd-month" required>
+                <p class="hint">We must allow a minimum of 16 days to set up your Direct Debit.</p>
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- ==================== BANK DETAILS ==================== -->
+          <fieldset style="margin-bottom: 1rem;">
+            <legend>Your bank details</legend>
+            <div class="form-grid">
+              <div class="field">
+                <label for="account-holder">Account holder name <span class="required">*</span></label>
+                <input type="text" id="account-holder" name="account-holder" placeholder="Name as it appears on your account" required maxlength="100" autocomplete="name">
+              </div>
+
+              <div class="field">
+                <label for="bank-name">Bank name <span class="required">*</span></label>
+                <input type="text" id="bank-name" name="bank-name" placeholder="e.g. Barclays" required maxlength="60">
+              </div>
+
+              <div class="form-grid form-grid--2col">
+                <div class="field">
+                  <label for="sort-code">Sort code <span class="required">*</span></label>
+                  <!-- inputmode="numeric" shows the number keypad on phones -->
+                  <input type="text" id="sort-code" name="sort-code" placeholder="00-00-00" required
+                         inputmode="numeric" pattern="\d{2}-?\d{2}-?\d{2}" maxlength="8">
+                  <p class="hint">Six digits, e.g. 20-00-00.</p>
+                </div>
+                <div class="field">
+                  <label for="account-number">Account number <span class="required">*</span></label>
+                  <input type="text" id="account-number" name="account-number" placeholder="12345678" required
+                         inputmode="numeric" pattern="\d{8}" maxlength="8">
+                  <p class="hint">Eight digits.</p>
+                </div>
+              </div>
+
+              <!-- Confirmation checkbox: must be ticked before submitting -->
+              <div class="field" style="display:flex; gap:0.7rem; align-items:flex-start;">
+                <input type="checkbox" id="dd-confirm" name="dd-confirm" required
+                       style="width:auto; margin-top:0.35rem;">
+                <label for="dd-confirm" style="margin:0; font-weight:400; font-family:var(--font-body);">
+                  I confirm I am the account holder and am authorised to set up
+                  Direct Debit payments on this account.
+                </label>
+              </div>
+            </div>
+          </fieldset>
+
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+            <a href="form.html">&larr; Back to your details</a>
+            <button type="submit" class="btn btn--primary">
+              <i class="fa-solid fa-lock" aria-hidden="true"></i> Confirm donation
+            </button>
+          </div>
+
+          <p class="hint" style="text-align:center;">
+            <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+            Your details are protected by the Direct Debit Guarantee.
+          </p>
+        </form>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ============================== FOOTER ============================== -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="brand" style="color:#fff;">
+          <img src="images/bird_2.jpg" alt="" class="brand__logo">
+          <span>Yajna <em>for Humanity</em></span>
+        </a>
+        <p>
+          A journey of compassion that makes change. We support communities
+          through disaster relief, food security and animal welfare.
+        </p>
+        <div class="socials">
+          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+          <a href="#" aria-label="Twitter / X"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <nav aria-label="Footer — explore">
+        <h4>Explore</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About us</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="donate.html">Our causes</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <nav aria-label="Footer — get involved">
+        <h4>Get involved</h4>
+        <ul class="footer-links">
+          <li><a href="form.html">Donate now</a></li>
+          <li><a href="signup.html">Create an account</a></li>
+          <li><a href="login.html">Log in</a></li>
+        </ul>
+      </nav>
+
+      <div>
+        <h4>Contact</h4>
+        <ul class="footer-contact">
+          <li><i class="fa-solid fa-location-dot" aria-hidden="true"></i><span>Chunkin Street, London, United Kingdom</span></li>
+          <li><i class="fa-solid fa-phone" aria-hidden="true"></i><span>+1 987 654 3210</span></li>
+          <li><i class="fa-solid fa-envelope" aria-hidden="true"></i><span>infoyajnacharity@gmail.com</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; <span id="year">2026</span> Yajna for Humanity. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
