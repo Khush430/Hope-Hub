@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Yajna for Humanity is a charity dedicated to disaster relief, food security and animal welfare. Join us and help create positive change.">
+  <title>Yajna for Humanity — Home</title>
+  <link rel="icon" href="images/bird_2.jpg">
+
+  <!-- Web fonts: Poppins for headings, Inter for body text -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome icon library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <!-- Single shared stylesheet for the whole site -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- ============================== HEADER ==============================
+       Sticky navigation bar shared by every page. On mobile the links
+       collapse behind the hamburger button (handled by js/main.js). -->
+  <header class="site-header">
+    <nav class="navbar container" aria-label="Main navigation">
+      <a href="index.html" class="brand">
+        <img src="images/bird_2.jpg" alt="Yajna for Humanity logo" class="brand__logo">
+        <span>Yajna <em>for Humanity</em></span>
+      </a>
+
+      <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul class="nav-links" id="primary-nav">
+        <li><a href="index.html" aria-current="page">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="donate.html">Causes</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="login.html">Log in</a></li>
+        <li><a href="form.html" class="btn btn--primary btn--sm">Donate now</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ============================== HERO ==============================
+         Full-screen photo with gradient overlay and the primary calls to
+         action. The first thing a visitor sees. -->
+    <section class="hero" aria-label="Introduction">
+      <div>
+        <p class="eyebrow" style="color: var(--clr-accent);">A journey of compassion</p>
+        <h1>Small acts of kindness, <em>a world of change</em></h1>
+        <p>
+          Yajna for Humanity supports communities through disaster relief, food
+          programmes and animal welfare. Every contribution — however small —
+          helps someone rebuild their life.
+        </p>
+        <div class="hero__actions">
+          <a href="form.html" class="btn btn--primary">Donate now</a>
+          <a href="about.html" class="btn btn--ghost">Learn more</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================= IMPACT STATS =========================
+         Key numbers animated by js/main.js — each counts up from zero to
+         its data-target value when scrolled into view. -->
+    <section class="stats" aria-label="Our impact in numbers">
+      <div class="container stats__grid">
+        <div class="stat">
+          <div class="stat__number" data-target="12500" data-suffix="+">0</div>
+          <div class="stat__label">Meals provided</div>
+        </div>
+        <div class="stat">
+          <div class="stat__number" data-target="3400" data-suffix="+">0</div>
+          <div class="stat__label">Active donors</div>
+        </div>
+        <div class="stat">
+          <div class="stat__number" data-target="28">0</div>
+          <div class="stat__label">Relief projects</div>
+        </div>
+        <div class="stat">
+          <div class="stat__number" data-target="15">0</div>
+          <div class="stat__label">Countries reached</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================= OUR CAUSES =========================
+         Three cards summarising what the charity does. Each links to the
+         causes page for detail. -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">What we do</p>
+          <h2>Support our cause</h2>
+          <p class="lead">
+            We are dedicated to making positive change in the lives of those in
+            need — providing essential resources, education and opportunities
+            to underprivileged communities around the globe.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <article class="card reveal">
+            <div class="card__media">
+              <img src="images/community.jpg" alt="Volunteers working together in a local community">
+            </div>
+            <div class="card__body">
+              <h3>Empower communities</h3>
+              <p>
+                We believe in empowering communities to create sustainable
+                change from within. Your donations provide access to education,
+                healthcare and livelihood opportunities, so families can build
+                a better future for themselves.
+              </p>
+              <a href="donate.html" class="card__link">Explore this cause <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+
+          <article class="card reveal">
+            <div class="card__media">
+              <img src="images/hand.jpg" alt="Hands reaching out to help one another">
+            </div>
+            <div class="card__body">
+              <h3>Make an impact</h3>
+              <p>
+                Every contribution, no matter how small, makes a significant
+                difference. With your support we provide food, shelter, clean
+                water and medical assistance to vulnerable communities,
+                helping break the cycle of poverty.
+              </p>
+              <a href="donate.html" class="card__link">Explore this cause <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+
+          <article class="card reveal">
+            <div class="card__media">
+              <img src="images/spread.png" alt="Illustration of people spreading hope and kindness">
+            </div>
+            <div class="card__body">
+              <h3>Spread hope &amp; kindness</h3>
+              <p>
+                Your generosity spreads hope to those who need it most. By
+                donating to Yajna for Humanity you become a beacon of light in
+                the lives of others, inspiring compassion and positive change
+                in our world.
+              </p>
+              <a href="donate.html" class="card__link">Explore this cause <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================= MISSION FEATURE =========================
+         Two-column row: photo + short mission statement with a tick list. -->
+    <section class="section section--alt">
+      <div class="container feature feature--flip">
+        <div class="feature__text reveal">
+          <p class="eyebrow">Why it matters</p>
+          <h2>Together, we can create a brighter future</h2>
+          <p>
+            The last 12 months have been some of the hardest communities have
+            ever faced — extreme weather, conflict and food insecurity have
+            destroyed families and livelihoods. Your support lets us respond
+            quickly where the need is greatest.
+          </p>
+          <ul class="check-list">
+            <li>100% transparency — see exactly where donations go</li>
+            <li>Rapid-response teams for emergencies and disasters</li>
+            <li>Long-term programmes, not just short-term aid</li>
+            <li>Local partnerships that empower communities</li>
+          </ul>
+          <a href="about.html" class="btn btn--primary">About our mission</a>
+        </div>
+        <div class="feature__media reveal">
+          <img src="images/charity.jpg" alt="A volunteer distributing aid supplies">
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================= CTA BAND ========================= -->
+    <section class="cta-band">
+      <div class="container reveal">
+        <h2>Ready to make a difference today?</h2>
+        <p>
+          Join us at Yajna for Humanity and be part of something truly
+          meaningful. Together we can create a better world for everyone.
+        </p>
+        <a href="form.html" class="btn btn--ghost">Start a donation</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================== FOOTER ==============================
+       Shared four-column footer: brand & socials, site links, get
+       involved, and contact details. -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="brand" style="color:#fff;">
+          <img src="images/bird_2.jpg" alt="" class="brand__logo">
+          <span>Yajna <em>for Humanity</em></span>
+        </a>
+        <p>
+          A journey of compassion that makes change. We support communities
+          through disaster relief, food security and animal welfare.
+        </p>
+        <div class="socials">
+          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+          <a href="#" aria-label="Twitter / X"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <nav aria-label="Footer — explore">
+        <h4>Explore</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About us</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="donate.html">Our causes</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <nav aria-label="Footer — get involved">
+        <h4>Get involved</h4>
+        <ul class="footer-links">
+          <li><a href="form.html">Donate now</a></li>
+          <li><a href="signup.html">Create an account</a></li>
+          <li><a href="login.html">Log in</a></li>
+        </ul>
+      </nav>
+
+      <div>
+        <h4>Contact</h4>
+        <ul class="footer-contact">
+          <li><i class="fa-solid fa-location-dot" aria-hidden="true"></i><span>Chunkin Street, London, United Kingdom</span></li>
+          <li><i class="fa-solid fa-phone" aria-hidden="true"></i><span>+1 987 654 3210</span></li>
+          <li><i class="fa-solid fa-envelope" aria-hidden="true"></i><span>infoyajnacharity@gmail.com</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; <span id="year">2026</span> Yajna for Humanity. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Shared behaviour: mobile nav, scroll reveals, counters, footer year -->
+  <script src="js/main.js"></script>
+</body>
+</html>
