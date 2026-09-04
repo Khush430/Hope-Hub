@@ -1,0 +1,1117 @@
+/* ==========================================================================
+   YAJNA FOR HUMANITY — Main Stylesheet
+   --------------------------------------------------------------------------
+   One shared stylesheet for every page of the site (a "design system").
+   Table of contents:
+     1.  Design tokens (CSS custom properties)
+     2.  Reset & base styles
+     3.  Typography
+     4.  Layout utilities (container, section, grids)
+     5.  Buttons
+     6.  Header & navigation (desktop + mobile)
+     7.  Hero (home page)
+     8.  Impact stats band
+     9.  Page banner (inner pages)
+     10. Cards
+     11. Two-column feature rows (about / blog / donate intros)
+     12. Values grid (about page)
+     13. Tables
+     14. Forms (contact, donation, auth)
+     15. Callout / CTA band
+     16. Footer
+     17. Scroll-reveal animations
+     18. Responsive breakpoints
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   1. DESIGN TOKENS
+   All colours, fonts, spacing and shadows are defined once here as CSS
+   variables, so the whole site stays consistent and can be re-themed by
+   editing a single block.
+   -------------------------------------------------------------------------- */
+:root {
+  /* Brand colours */
+  --clr-primary:      #e0533f;   /* warm coral red — calls to action */
+  --clr-primary-dark: #c43e2c;   /* hover state for primary */
+  --clr-accent:       #f4a340;   /* amber — highlights & eyebrows */
+  --clr-dark:         #1b2b3a;   /* deep navy — headings, header, footer */
+  --clr-dark-soft:    #24384c;   /* lighter navy for panels on dark */
+
+  /* Neutrals */
+  --clr-bg:      #faf8f5;        /* warm off-white page background */
+  --clr-surface: #ffffff;        /* cards, forms */
+  --clr-text:    #3d4b5c;        /* body copy */
+  --clr-muted:   #74828f;        /* secondary text */
+  --clr-line:    #e7e2da;        /* borders & dividers */
+
+  /* Typography */
+  --font-heading: "Poppins", "Segoe UI", sans-serif;
+  --font-body:    "Inter", "Segoe UI", sans-serif;
+
+  /* Shape & depth */
+  --radius:    14px;
+  --radius-sm: 8px;
+  --shadow-sm: 0 2px 8px  rgba(27, 43, 58, 0.08);
+  --shadow-md: 0 10px 30px rgba(27, 43, 58, 0.12);
+  --shadow-lg: 0 20px 45px rgba(27, 43, 58, 0.18);
+
+  /* Rhythm */
+  --section-pad: clamp(3.5rem, 8vw, 6.5rem); /* fluid vertical spacing */
+  --header-h: 72px;
+}
+
+
+/* --------------------------------------------------------------------------
+   2. RESET & BASE
+   A small modern reset so every browser starts from the same baseline.
+   -------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--clr-text);
+  background-color: var(--clr-bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  color: var(--clr-primary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--clr-primary-dark);
+}
+
+
+/* --------------------------------------------------------------------------
+   3. TYPOGRAPHY
+   clamp() makes headings scale fluidly between mobile and desktop sizes.
+   -------------------------------------------------------------------------- */
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  color: var(--clr-dark);
+  line-height: 1.25;
+  font-weight: 600;
+}
+
+h1 { font-size: clamp(2.1rem, 5vw, 3.4rem); }
+h2 { font-size: clamp(1.6rem, 3.5vw, 2.3rem); }
+h3 { font-size: 1.2rem; }
+
+/* Small uppercase label shown above section headings */
+.eyebrow {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--clr-primary);
+  margin-bottom: 0.6rem;
+}
+
+/* Slightly larger intro paragraph under headings */
+.lead {
+  font-size: 1.08rem;
+  color: var(--clr-muted);
+  max-width: 62ch;
+}
+
+
+/* --------------------------------------------------------------------------
+   4. LAYOUT UTILITIES
+   -------------------------------------------------------------------------- */
+.container {
+  width: min(1140px, 92%);   /* never wider than 1140px, never touches edges */
+  margin-inline: auto;
+}
+
+.section {
+  padding-block: var(--section-pad);
+}
+
+.section--alt {
+  background: var(--clr-surface); /* alternating white band for contrast */
+}
+
+/* Centre-aligned heading block used at the top of most sections */
+.section-head {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto clamp(2rem, 5vw, 3.5rem);
+}
+
+.section-head .lead {
+  margin-inline: auto;
+}
+
+/* Responsive card grid: as many 300px+ columns as fit the row */
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 1.8rem;
+}
+
+
+/* --------------------------------------------------------------------------
+   5. BUTTONS
+   .btn is the base; modifier classes change colour/size (BEM naming).
+   -------------------------------------------------------------------------- */
+.btn {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.8rem 1.9rem;
+  border-radius: 50px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);   /* subtle lift on hover */
+}
+
+.btn--primary {
+  background: var(--clr-primary);
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(224, 83, 63, 0.35);
+}
+
+.btn--primary:hover {
+  background: var(--clr-primary-dark);
+  color: #fff;
+}
+
+.btn--ghost {
+  /* transparent button for use on photos / dark backgrounds */
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(4px);
+}
+
+.btn--ghost:hover {
+  background: #fff;
+  color: var(--clr-dark);
+}
+
+.btn--sm {
+  padding: 0.5rem 1.3rem;
+  font-size: 0.85rem;
+}
+
+
+/* --------------------------------------------------------------------------
+   6. HEADER & NAVIGATION
+   Sticky header; on mobile the links collapse into a hamburger-toggled panel.
+   -------------------------------------------------------------------------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);           /* frosted-glass effect */
+  border-bottom: 1px solid var(--clr-line);
+  transition: box-shadow 0.25s ease;
+}
+
+.site-header.is-scrolled {
+  box-shadow: var(--shadow-sm);          /* added by JS once user scrolls */
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  min-height: var(--header-h);
+}
+
+/* Logo + wordmark */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--clr-dark);
+}
+
+.brand__logo {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;                     /* crops the photo into the circle */
+  border: 2px solid var(--clr-accent);
+}
+
+.brand em {
+  font-style: normal;
+  color: var(--clr-primary);
+}
+
+/* Navigation links */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+}
+
+.nav-links a:not(.btn) {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 0.93rem;
+  color: var(--clr-dark);
+  padding: 0.3rem 0;
+  position: relative;
+}
+
+/* Animated underline that grows on hover / current page */
+.nav-links a:not(.btn)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 0;
+  height: 2px;
+  background: var(--clr-primary);
+  transition: width 0.25s ease;
+}
+
+.nav-links a:not(.btn):hover::after,
+.nav-links a[aria-current="page"]::after {
+  width: 100%;
+}
+
+.nav-links a[aria-current="page"] {
+  color: var(--clr-primary);
+}
+
+/* Hamburger button — hidden on desktop, shown on mobile (see §18) */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  padding: 6px;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 24px;
+  height: 2.5px;
+  border-radius: 2px;
+  background: var(--clr-dark);
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+/* Hamburger morphs into an X when the menu is open */
+.nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+
+
+/* --------------------------------------------------------------------------
+   7. HERO (home page)
+   Full-viewport photo with a dark gradient overlay so text stays readable.
+   -------------------------------------------------------------------------- */
+.hero {
+  min-height: calc(92vh - var(--header-h));
+  display: grid;
+  place-items: center;
+  text-align: center;
+  color: #fff;
+  padding: 5rem 1rem;
+  background:
+    linear-gradient(rgba(18, 28, 38, 0.72), rgba(18, 28, 38, 0.6)),
+    url("../images/hand.jpg") center 35% / cover no-repeat;
+}
+
+.hero h1 {
+  color: #fff;
+  max-width: 17ch;
+  margin-inline: auto;
+}
+
+.hero h1 em {
+  font-style: normal;
+  color: var(--clr-accent);
+}
+
+.hero p {
+  max-width: 55ch;
+  margin: 1.2rem auto 2.2rem;
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.hero__actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;   /* buttons stack gracefully on narrow screens */
+}
+
+
+/* --------------------------------------------------------------------------
+   8. IMPACT STATS BAND
+   Numbers are animated by js/main.js counting up to data-target values.
+   -------------------------------------------------------------------------- */
+.stats {
+  background: var(--clr-dark);
+  padding-block: 3rem;
+}
+
+.stats__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 2rem;
+  text-align: center;
+}
+
+.stat__number {
+  font-family: var(--font-heading);
+  font-size: clamp(1.9rem, 4vw, 2.6rem);
+  font-weight: 700;
+  color: var(--clr-accent);
+}
+
+.stat__label {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.92rem;
+}
+
+
+/* --------------------------------------------------------------------------
+   9. PAGE BANNER (inner pages)
+   Shared banner; each page picks its photo with a modifier class.
+   -------------------------------------------------------------------------- */
+.page-banner {
+  display: grid;
+  place-items: center;
+  text-align: center;
+  min-height: 320px;
+  padding: 4rem 1rem;
+  color: #fff;
+  background-color: var(--clr-dark);
+  background-size: cover;
+  background-position: center;
+}
+
+.page-banner h1 { color: #fff; }
+
+.page-banner p {
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 55ch;
+  margin-top: 0.8rem;
+}
+
+/* Per-page banner photos (paths are relative to this CSS file) */
+.page-banner--about   { background-image: linear-gradient(rgba(18,28,38,.68), rgba(18,28,38,.68)), url("../images/community.jpg"); }
+.page-banner--blog    { background-image: linear-gradient(rgba(18,28,38,.68), rgba(18,28,38,.68)), url("../images/bloglogo.jpg"); }
+.page-banner--donate  { background-image: linear-gradient(rgba(18,28,38,.68), rgba(18,28,38,.68)), url("../images/charity.jpg"); }
+.page-banner--contact { background-image: linear-gradient(rgba(18,28,38,.68), rgba(18,28,38,.68)), url("../images/spread.png"); }
+
+
+/* --------------------------------------------------------------------------
+   10. CARDS
+   Used for causes on the home and donate pages, and blog posts.
+   -------------------------------------------------------------------------- */
+.card {
+  background: var(--clr-surface);
+  border-radius: var(--radius);
+  overflow: hidden;                    /* clips image corners to the radius */
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);         /* lift the card on hover */
+  box-shadow: var(--shadow-md);
+}
+
+.card__media {
+  height: 210px;
+  overflow: hidden;
+}
+
+.card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;                   /* fills the box without distortion */
+  transition: transform 0.4s ease;
+}
+
+.card:hover .card__media img {
+  transform: scale(1.06);              /* gentle zoom on the photo */
+}
+
+.card__body {
+  padding: 1.5rem 1.6rem 1.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  flex: 1;                             /* equal-height cards in a row */
+}
+
+.card__body p {
+  font-size: 0.95rem;
+  color: var(--clr-muted);
+}
+
+.card__link {
+  margin-top: auto;                    /* pins the link to the card bottom */
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* Small tag shown on blog cards (e.g. "Emergency relief") */
+.card__tag {
+  align-self: flex-start;
+  background: rgba(244, 163, 64, 0.16);
+  color: #b06a10;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.2rem 0.7rem;
+  border-radius: 50px;
+}
+
+
+/* --------------------------------------------------------------------------
+   11. TWO-COLUMN FEATURE ROWS
+   Text on one side, photo on the other. Collapses to one column on mobile.
+   -------------------------------------------------------------------------- */
+.feature {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 6vw, 4.5rem);
+  align-items: center;
+}
+
+.feature--flip .feature__media { order: -1; }  /* photo on the left instead */
+
+.feature__media img {
+  width: 100%;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+}
+
+.feature__text h2 { margin-bottom: 1rem; }
+
+.feature__text p + p { margin-top: 0.9rem; }
+
+.feature__text .btn { margin-top: 1.6rem; }
+
+/* Tick list used inside feature rows */
+.check-list {
+  margin-top: 1.2rem;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.check-list li {
+  padding-left: 1.7rem;
+  position: relative;
+}
+
+.check-list li::before {
+  content: "\2713";                    /* ✓ */
+  position: absolute;
+  left: 0;
+  color: var(--clr-primary);
+  font-weight: 700;
+}
+
+
+/* --------------------------------------------------------------------------
+   12. VALUES GRID (about page)
+   -------------------------------------------------------------------------- */
+.value {
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-line);
+  border-radius: var(--radius);
+  padding: 1.8rem 1.6rem;
+  text-align: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.value:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-sm);
+}
+
+.value i {
+  font-size: 1.5rem;
+  color: var(--clr-primary);
+  background: rgba(224, 83, 63, 0.1);
+  width: 56px;
+  height: 56px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  margin: 0 auto 1rem;
+}
+
+.value p {
+  font-size: 0.92rem;
+  color: var(--clr-muted);
+  margin-top: 0.4rem;
+}
+
+
+/* --------------------------------------------------------------------------
+   13. TABLES
+   Wrapped in .table-wrap so wide tables scroll sideways on small screens
+   instead of breaking the page layout.
+   -------------------------------------------------------------------------- */
+.table-wrap {
+  overflow-x: auto;
+  background: var(--clr-surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 640px;                    /* forces scroll rather than squish */
+  font-size: 0.95rem;
+}
+
+caption {
+  text-align: left;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  color: var(--clr-dark);
+  padding: 1.2rem 1.4rem 0.4rem;
+}
+
+th, td {
+  text-align: left;
+  padding: 0.9rem 1.4rem;
+  border-bottom: 1px solid var(--clr-line);
+}
+
+thead th {
+  background: var(--clr-dark);
+  color: #fff;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+tbody tr:nth-child(even) { background: #fbf7f1; }  /* zebra striping */
+tbody tr:hover           { background: #f5efe6; }
+tbody tr:last-child td   { border-bottom: 0; }
+
+
+/* --------------------------------------------------------------------------
+   14. FORMS
+   One consistent style for contact, donation and login/sign-up forms.
+   -------------------------------------------------------------------------- */
+.form-card {
+  background: var(--clr-surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  padding: clamp(1.6rem, 4vw, 2.8rem);
+}
+
+.form-grid {
+  display: grid;
+  gap: 1.2rem;
+}
+
+/* Two fields side by side on desktop; stacks on mobile (see §18) */
+.form-grid--2col {
+  grid-template-columns: 1fr 1fr;
+}
+
+.field label {
+  display: block;
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 0.88rem;
+  color: var(--clr-dark);
+  margin-bottom: 0.35rem;
+}
+
+.field .required { color: var(--clr-primary); }
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  font: inherit;
+  font-size: 0.95rem;
+  color: var(--clr-text);
+  padding: 0.75rem 0.95rem;
+  border: 1.5px solid var(--clr-line);
+  border-radius: var(--radius-sm);
+  background: #fff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.field textarea { resize: vertical; }
+
+/* Clear focus state — important for accessibility */
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--clr-primary);
+  box-shadow: 0 0 0 3px rgba(224, 83, 63, 0.15);
+}
+
+.field .hint {
+  font-size: 0.8rem;
+  color: var(--clr-muted);
+  margin-top: 0.3rem;
+}
+
+fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0 0 2rem;
+}
+
+legend {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1.15rem;
+  color: var(--clr-dark);
+  margin-bottom: 1.2rem;
+  padding: 0;
+}
+
+/* Donation amount picker — radio buttons styled as selectable pills */
+.amounts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+
+.amounts input[type="radio"] {
+  position: absolute;
+  opacity: 0;                          /* hide the radio, keep it usable */
+}
+
+.amounts label {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  padding: 0.6rem 1.5rem;
+  border: 2px solid var(--clr-line);
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.amounts input[type="radio"]:checked + label {
+  background: var(--clr-primary);
+  border-color: var(--clr-primary);
+  color: #fff;
+}
+
+.amounts input[type="radio"]:focus-visible + label {
+  box-shadow: 0 0 0 3px rgba(224, 83, 63, 0.3);
+}
+
+/* Step indicator for the two-step donation flow */
+.steps {
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: var(--clr-muted);
+}
+
+.step__dot {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--clr-line);
+  color: var(--clr-dark);
+  font-weight: 700;
+}
+
+.step--active { color: var(--clr-dark); }
+
+.step--active .step__dot {
+  background: var(--clr-primary);
+  color: #fff;
+}
+
+/* Success message shown by JS after the payment form is submitted */
+.form-success {
+  text-align: center;
+  padding: 2.5rem 1rem;
+}
+
+.form-success i {
+  font-size: 3rem;
+  color: #2e9e5b;
+  margin-bottom: 1rem;
+}
+
+/* Contact info blocks beside the contact form */
+.contact-item {
+  display: flex;
+  gap: 1.1rem;
+  align-items: flex-start;
+  background: var(--clr-surface);
+  border-radius: var(--radius);
+  padding: 1.4rem 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.contact-item i {
+  font-size: 1.2rem;
+  color: var(--clr-primary);
+  background: rgba(224, 83, 63, 0.1);
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+}
+
+.contact-item h3 { font-size: 1rem; }
+
+.contact-item p {
+  font-size: 0.9rem;
+  color: var(--clr-muted);
+}
+
+.contact-layout {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+.contact-layout .contact-item + .contact-item { margin-top: 1.2rem; }
+
+/* Auth pages (login / sign-up): centred card on a brand gradient */
+.auth {
+  min-height: calc(100vh - var(--header-h));
+  display: grid;
+  place-items: center;
+  padding: 4rem 1rem;
+  background:
+    linear-gradient(135deg, rgba(27, 43, 58, 0.94), rgba(196, 62, 44, 0.85)),
+    url("../images/spread.png") center / cover;
+}
+
+.auth-card {
+  width: min(430px, 100%);
+  background: var(--clr-surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  padding: 2.5rem 2.2rem;
+}
+
+.auth-card h1 {
+  font-size: 1.6rem;
+  text-align: center;
+}
+
+.auth-card > p {
+  text-align: center;
+  color: var(--clr-muted);
+  font-size: 0.92rem;
+  margin: 0.4rem 0 1.8rem;
+}
+
+.auth-card .btn { width: 100%; }
+
+.auth-card .swap {
+  text-align: center;
+  font-size: 0.9rem;
+  margin-top: 1.4rem;
+}
+
+/* "or continue with" divider between form and social buttons */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  color: var(--clr-muted);
+  font-size: 0.8rem;
+  margin: 1.4rem 0;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--clr-line);
+}
+
+.social-auth {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+}
+
+.social-auth button {
+  font: inherit;
+  font-weight: 500;
+  font-size: 0.9rem;
+  padding: 0.65rem;
+  border: 1.5px solid var(--clr-line);
+  border-radius: var(--radius-sm);
+  background: #fff;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.social-auth button:hover { background: var(--clr-bg); }
+
+.social-auth i { margin-right: 0.4rem; }
+
+
+/* --------------------------------------------------------------------------
+   15. CALLOUT / CTA BAND
+   Full-width coloured strip inviting the visitor to act.
+   -------------------------------------------------------------------------- */
+.cta-band {
+  background:
+    linear-gradient(rgba(196, 62, 44, 0.9), rgba(196, 62, 44, 0.9)),
+    url("../images/food.jpg") center / cover fixed;
+  text-align: center;
+  color: #fff;
+  padding-block: clamp(3rem, 7vw, 5rem);
+}
+
+.cta-band h2 {
+  color: #fff;
+  max-width: 24ch;
+  margin: 0 auto 0.8rem;
+}
+
+.cta-band p {
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 55ch;
+  margin: 0 auto 1.8rem;
+}
+
+
+/* --------------------------------------------------------------------------
+   16. FOOTER
+   Four-column grid that stacks on mobile.
+   -------------------------------------------------------------------------- */
+.site-footer {
+  background: var(--clr-dark);
+  color: rgba(255, 255, 255, 0.75);
+  padding-top: var(--section-pad);
+  font-size: 0.93rem;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
+  gap: 2.5rem;
+  padding-bottom: 3rem;
+}
+
+.site-footer h4 {
+  color: #fff;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.site-footer a {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.site-footer a:hover { color: var(--clr-accent); }
+
+.footer-brand p { margin: 0.8rem 0 1.2rem; }
+
+.footer-links li + li { margin-top: 0.5rem; }
+
+/* Circular social media icons */
+.socials {
+  display: flex;
+  gap: 0.7rem;
+}
+
+.socials a {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--clr-dark-soft);
+  color: #fff;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.socials a:hover {
+  background: var(--clr-primary);
+  color: #fff;
+  transform: translateY(-3px);
+}
+
+.footer-contact li {
+  display: flex;
+  gap: 0.7rem;
+  align-items: baseline;
+}
+
+.footer-contact li + li { margin-top: 0.7rem; }
+
+.footer-contact i { color: var(--clr-accent); }
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  text-align: center;
+  padding: 1.3rem 1rem;
+  font-size: 0.85rem;
+}
+
+
+/* --------------------------------------------------------------------------
+   17. SCROLL-REVEAL ANIMATIONS
+   Elements with .reveal start hidden; js/main.js adds .is-visible when they
+   scroll into view. Users who prefer reduced motion see no animation.
+   -------------------------------------------------------------------------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Stagger: cards inside a grid animate one after another */
+.grid-3 .reveal:nth-child(2) { transition-delay: 0.12s; }
+.grid-3 .reveal:nth-child(3) { transition-delay: 0.24s; }
+.grid-3 .reveal:nth-child(4) { transition-delay: 0.36s; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   18. RESPONSIVE BREAKPOINTS
+   Mobile-friendly overrides. 900px: tablets / nav collapse. 640px: phones.
+   -------------------------------------------------------------------------- */
+@media (max-width: 900px) {
+
+  /* --- Mobile navigation: hamburger + slide-down panel --- */
+  .nav-toggle { display: flex; }
+
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    background: var(--clr-surface);
+    border-bottom: 1px solid var(--clr-line);
+    box-shadow: var(--shadow-md);
+    padding: 0.5rem 4%;
+
+    /* Hidden by default; .is-open (added by JS) reveals it */
+    max-height: 0;
+    overflow: hidden;
+    visibility: hidden;
+    transition: max-height 0.35s ease, visibility 0.35s;
+  }
+
+  .nav-links.is-open {
+    max-height: 480px;
+    visibility: visible;
+  }
+
+  .nav-links li { width: 100%; }
+
+  .nav-links a:not(.btn) {
+    display: block;
+    padding: 0.9rem 0;
+    border-bottom: 1px solid var(--clr-line);
+  }
+
+  .nav-links a:not(.btn)::after { display: none; }
+
+  .nav-links .btn { margin: 1rem 0; }
+
+  /* --- Layout stacks --- */
+  .feature,
+  .feature--flip {
+    grid-template-columns: 1fr;
+  }
+
+  .feature--flip .feature__media { order: 0; }
+
+  .contact-layout { grid-template-columns: 1fr; }
+
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 640px) {
+  .form-grid--2col { grid-template-columns: 1fr; }
+  .footer-grid     { grid-template-columns: 1fr; }
+  .steps           { gap: 1.2rem; }
+  .social-auth     { grid-template-columns: 1fr; }
+
+  .hero { min-height: 70vh; }
+}

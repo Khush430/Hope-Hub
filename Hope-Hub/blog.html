@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="News and stories from Yajna for Humanity — field updates, appeals and a transparent record of recent donations.">
+  <title>Blog &amp; news — Yajna for Humanity</title>
+  <link rel="icon" href="images/bird_2.jpg">
+
+  <!-- Web fonts + icons + shared stylesheet -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- ============================== HEADER ============================== -->
+  <header class="site-header">
+    <nav class="navbar container" aria-label="Main navigation">
+      <a href="index.html" class="brand">
+        <img src="images/bird_2.jpg" alt="Yajna for Humanity logo" class="brand__logo">
+        <span>Yajna <em>for Humanity</em></span>
+      </a>
+
+      <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul class="nav-links" id="primary-nav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="blog.html" aria-current="page">Blog</a></li>
+        <li><a href="donate.html">Causes</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="login.html">Log in</a></li>
+        <li><a href="form.html" class="btn btn--primary btn--sm">Donate now</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ========================= PAGE BANNER ========================= -->
+    <section class="page-banner page-banner--blog">
+      <div>
+        <p class="eyebrow" style="color: var(--clr-accent);">Stories from the field</p>
+        <h1>Blog &amp; news</h1>
+        <p>Updates from our projects, appeals and community.</p>
+      </div>
+    </section>
+
+    <!-- ======================= FEATURED ARTICLE =======================
+         The lead story: text beside its image using the feature layout. -->
+    <section class="section">
+      <div class="container feature">
+        <div class="feature__text reveal">
+          <p class="eyebrow">Featured story</p>
+          <h2>A year of crisis — and of extraordinary generosity</h2>
+          <p>
+            The last 12 months have been some of the hardest we've ever seen.
+            Families, communities and livelihoods have been destroyed by
+            frequent and deadly extreme weather events — earthquakes,
+            heatwaves, fires, floods and storms — and by ongoing and
+            escalating conflict.
+          </p>
+          <p>
+            Yet through it all, our donors stepped up. Thanks to your support,
+            our rapid-response teams reached 28 communities this year with
+            shelter, food and medical care.
+          </p>
+          <a href="donate.html" class="btn btn--primary">Support our response</a>
+        </div>
+        <div class="feature__media reveal">
+          <img src="images/blog.webp" alt="Aid workers responding to a humanitarian crisis">
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================= RECENT POSTS ========================= -->
+    <section class="section section--alt">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Latest updates</p>
+          <h2>Recent posts</h2>
+        </div>
+
+        <div class="grid-3">
+          <article class="card reveal">
+            <div class="card__media">
+              <img src="images/earthquake.webp" alt="Rescue workers searching a collapsed building after an earthquake">
+            </div>
+            <div class="card__body">
+              <span class="card__tag">Emergency relief</span>
+              <h3>Rebuilding after the earthquake</h3>
+              <p>
+                How your donations delivered emergency shelter, medical supplies
+                and food to survivors within the first 72 hours.
+              </p>
+              <a href="donate.html" class="card__link">Read the appeal <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+
+          <article class="card reveal">
+            <div class="card__media">
+              <img src="images/food.jpg" alt="Fresh food parcels prepared for distribution">
+            </div>
+            <div class="card__body">
+              <span class="card__tag">Food security</span>
+              <h3>12,500 meals and counting</h3>
+              <p>
+                Our food donation drive is nourishing families facing food
+                insecurity — here's what one week of distribution looks like.
+              </p>
+              <a href="donate.html" class="card__link">Read the appeal <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+
+          <article class="card reveal">
+            <div class="card__media">
+              <img src="images/dog.jpg" alt="A rescued dog being cared for at a shelter">
+            </div>
+            <div class="card__body">
+              <span class="card__tag">Animal welfare</span>
+              <h3>Second chances for shelter animals</h3>
+              <p>
+                From food and shelter to medical treatment and adoption
+                services — inside our animal welfare initiative.
+              </p>
+              <a href="donate.html" class="card__link">Read the appeal <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== DONATION TRANSPARENCY =====================
+         A semantic table (caption + thead + tbody) of recent donations.
+         The .table-wrap div lets it scroll sideways on small screens. -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Transparency</p>
+          <h2>Recent donations</h2>
+          <p class="lead">
+            We publish recent contributions so you can see the generosity that
+            powers our work.
+          </p>
+        </div>
+
+        <div class="table-wrap reveal">
+          <table>
+            <caption>Donations received, April – May 2024</caption>
+            <thead>
+              <tr>
+                <th scope="col">Donor name</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Date</th>
+                <th scope="col">Payment method</th>
+                <th scope="col">Type</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>John Smith</td>
+                <td>£100</td>
+                <td>1 May 2024</td>
+                <td>Credit card</td>
+                <td>One-time</td>
+              </tr>
+              <tr>
+                <td>Khush Joshi</td>
+                <td>£200</td>
+                <td>25 April 2024</td>
+                <td>PayPal</td>
+                <td>Monthly</td>
+              </tr>
+              <tr>
+                <td>Ananya Krishnan</td>
+                <td>£50</td>
+                <td>3 May 2024</td>
+                <td>Bank transfer</td>
+                <td>Annual</td>
+              </tr>
+              <tr>
+                <td>David Brown</td>
+                <td>£150</td>
+                <td>10 May 2024</td>
+                <td>Cheque</td>
+                <td>One-time</td>
+              </tr>
+              <tr>
+                <td>Michael White</td>
+                <td>£75</td>
+                <td>29 April 2024</td>
+                <td>Online banking</td>
+                <td>Monthly</td>
+              </tr>
+              <tr>
+                <td>Franklin Clinton</td>
+                <td>£120</td>
+                <td>15 May 2024</td>
+                <td>PayPal</td>
+                <td>One-time</td>
+              </tr>
+              <tr>
+                <td>Swathi Reddy</td>
+                <td>£250</td>
+                <td>22 April 2024</td>
+                <td>Debit card</td>
+                <td>Annual</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================== FOOTER ============================== -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="brand" style="color:#fff;">
+          <img src="images/bird_2.jpg" alt="" class="brand__logo">
+          <span>Yajna <em>for Humanity</em></span>
+        </a>
+        <p>
+          A journey of compassion that makes change. We support communities
+          through disaster relief, food security and animal welfare.
+        </p>
+        <div class="socials">
+          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+          <a href="#" aria-label="Twitter / X"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <nav aria-label="Footer — explore">
+        <h4>Explore</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About us</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="donate.html">Our causes</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <nav aria-label="Footer — get involved">
+        <h4>Get involved</h4>
+        <ul class="footer-links">
+          <li><a href="form.html">Donate now</a></li>
+          <li><a href="signup.html">Create an account</a></li>
+          <li><a href="login.html">Log in</a></li>
+        </ul>
+      </nav>
+
+      <div>
+        <h4>Contact</h4>
+        <ul class="footer-contact">
+          <li><i class="fa-solid fa-location-dot" aria-hidden="true"></i><span>Chunkin Street, London, United Kingdom</span></li>
+          <li><i class="fa-solid fa-phone" aria-hidden="true"></i><span>+1 987 654 3210</span></li>
+          <li><i class="fa-solid fa-envelope" aria-hidden="true"></i><span>infoyajnacharity@gmail.com</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; <span id="year">2026</span> Yajna for Humanity. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
